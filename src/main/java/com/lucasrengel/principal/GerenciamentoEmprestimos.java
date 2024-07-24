@@ -1,4 +1,4 @@
-package com.lucasrengel.gerenciamentoemprestimos;
+package com.lucasrengel.principal;
 
 public class GerenciamentoEmprestimos {
 
