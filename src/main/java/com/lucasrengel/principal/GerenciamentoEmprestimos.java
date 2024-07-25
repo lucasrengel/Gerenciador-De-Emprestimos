@@ -1,8 +1,11 @@
 package com.lucasrengel.principal;
 
+import com.lucasrengel.visao.TelaMenu;
+
 public class GerenciamentoEmprestimos {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        TelaMenu tela = new TelaMenu();
+        tela.setVisible(true);
     }
 }
