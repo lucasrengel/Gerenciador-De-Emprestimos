@@ -40,6 +40,7 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoAmigo.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
         botaoAmigo.setForeground(new java.awt.Color(0, 117, 143));
         botaoAmigo.setText("Amigo");
+        botaoAmigo.setFocusPainted(false);
         botaoAmigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAmigoActionPerformed(evt);
@@ -50,11 +51,13 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoEmprestimo.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
         botaoEmprestimo.setForeground(new java.awt.Color(0, 117, 143));
         botaoEmprestimo.setText("Emprestimos");
+        botaoEmprestimo.setFocusPainted(false);
 
         botaoFerramenta.setBackground(new java.awt.Color(255, 255, 255));
         botaoFerramenta.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
         botaoFerramenta.setForeground(new java.awt.Color(0, 117, 143));
         botaoFerramenta.setText("Ferramenta");
+        botaoFerramenta.setFocusPainted(false);
 
         painelBarra.setBackground(new java.awt.Color(255, 255, 255));
         painelBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));

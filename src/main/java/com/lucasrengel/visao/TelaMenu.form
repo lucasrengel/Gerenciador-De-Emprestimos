@@ -102,6 +102,7 @@
               <Color blue="8f" green="75" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Amigo"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAmigoActionPerformed"/>
@@ -119,6 +120,7 @@
               <Color blue="8f" green="75" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Emprestimos"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botaoFerramenta">
@@ -133,6 +135,7 @@
               <Color blue="8f" green="75" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ferramenta"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="painelBarra">
