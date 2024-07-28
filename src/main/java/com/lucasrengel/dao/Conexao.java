@@ -17,7 +17,7 @@ public class Conexao {
 
             //configuracao do caminho do mySQL
             String server = "localhost";
-            String database = "db_a3";
+            String database = "db_gerenciador";
             String url = "jdbc:mysql://" + server + ":3306/" + database;
             String user = "root";
             String password = "1234";
