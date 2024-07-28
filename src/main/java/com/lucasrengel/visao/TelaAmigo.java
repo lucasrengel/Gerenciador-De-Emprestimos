@@ -27,25 +27,25 @@ public class TelaAmigo extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaAmigos = new javax.swing.JTable();
+        tabelaAmigo = new javax.swing.JTable();
         botaoCancelar = new javax.swing.JButton();
         botaoAtualizar = new javax.swing.JButton();
         botaoCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabelaAmigos.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAmigo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome", "Telefone"
+                "ID", "Nome", "Telefone"
             }
         ));
-        jScrollPane1.setViewportView(tabelaAmigos);
+        jScrollPane1.setViewportView(tabelaAmigo);
 
         botaoCancelar.setText("Cancelar");
 
@@ -136,6 +136,6 @@ public class TelaAmigo extends javax.swing.JFrame {
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaAmigos;
+    private javax.swing.JTable tabelaAmigo;
     // End of variables declaration//GEN-END:variables
 }
