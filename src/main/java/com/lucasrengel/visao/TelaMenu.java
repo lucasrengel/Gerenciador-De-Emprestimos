@@ -1,11 +1,14 @@
 package com.lucasrengel.visao;
 
+import com.lucasrengel.dao.Conexao;
+
 public class TelaMenu extends javax.swing.JFrame {
 
     private int xMouse, yMouse; //variaveis para mover a janela com a barra personalizada
     
     public TelaMenu() {
         initComponents();
+        Conexao.getConexao();
     }
 
     @SuppressWarnings("unchecked")
