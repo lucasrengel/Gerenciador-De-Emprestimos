@@ -8,7 +8,10 @@ import java.util.ArrayList;
 public class EmprestimoDAO {
 
     public static ArrayList<Emprestimo> minhaLista = new ArrayList<>();
-
+    //transformar os IDs em objetos
+    AmigoDAO amigoDAO = new AmigoDAO();
+    FerramentaDAO ferramentaDAo = new FerramentaDAO();
+    
     //metodo para se conectar ao banco de dados
     private Connection getConexao() {
         return Conexao.getConexao();
