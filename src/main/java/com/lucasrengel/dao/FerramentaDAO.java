@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class FerramentaDAO {
 
     public static ArrayList<Ferramenta> minhaLista = new ArrayList<>();
-
+    double custoTotal;
+    
     //metodo para se conectar ao banco de dados
     private Connection getConexao() {
         return Conexao.getConexao();
