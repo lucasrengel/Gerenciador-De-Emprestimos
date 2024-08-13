@@ -32,6 +32,7 @@ public class AmigoDAO {
             stmt.close();
 
         } catch (SQLException ex) {
+            throw new RuntimeException(erro);
         }
 
         return minhaLista;
