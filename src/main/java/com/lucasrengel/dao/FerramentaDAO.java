@@ -60,6 +60,18 @@ public class FerramentaDAO {
         }
     }
 
+    public boolean deleteFerramentaBD(int id){
+        try{
+            Statement stmt = this.getConexao().createStatement();
+            stmt.execute("DELETE FROM tb_amigos WHERE id = " + id);
+            stmt.close();
+
+        }catch (SQLException erro){
+            throw new RuntimeException(erro);
+        }
+        return true;
+    }
+
     //metodo para se conectar ao banco de dados
     private Connection getConexao() {
         return Conexao.getConexao();
