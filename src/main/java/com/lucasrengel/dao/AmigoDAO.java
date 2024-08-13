@@ -31,7 +31,7 @@ public class AmigoDAO {
 
             stmt.close();
 
-        } catch (SQLException ex) {
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
         }
 
