@@ -58,6 +58,20 @@ public class AmigoDAO {
         }
     }
 
+    //deleta um amigo pelo seu id
+    public boolean deleteAmigoBD(int id){
+        try{
+            Statement stmt = this.getConexao().createStatement();
+            stmt.executeUpdate("DELETE FROM tb_amigos WHERE id = " + id);
+            stmt.close();
+
+        }catch (SQLException erro){
+            throw new RuntimeException(erro);
+        }
+
+        return true;
+    }
+
     //metodo para se conectar ao banco de dados
     private Connection getConexao() {
         return Conexao.getConexao();
