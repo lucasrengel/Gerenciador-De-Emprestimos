@@ -1,10 +1,8 @@
 package com.lucasrengel.dao;
 
 import com.lucasrengel.modelo.Ferramenta;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
 
 // Classe DAO (Data Access Object) para a entidade Ferramenta, contendo métodos para realizar operações de CRUD no banco de dados.
@@ -39,6 +37,27 @@ public class FerramentaDAO {
 
         return minhaLista;
 
+    }
+
+    //cria uma ferramenta a partir de um objeto
+    public boolean insertFerramentaBD(Ferramenta objeto){
+        String sql = "INSERT INTO tb_ferramentas(id,nome,marca,custo)VALUES(?,?,?,?)";
+
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+
+            stmt.setInt(1, objeto.getId());
+            stmt.setString(2, objeto.getNome());
+            stmt.setString(3, objeto.getMarca());
+            stmt.setDouble(4, objeto.getPreco());
+
+            stmt.execute();
+            stmt.close();
+
+            return true;
+        }catch (SQLException erro){
+            throw new RuntimeException(erro);
+        }
     }
 
     //metodo para se conectar ao banco de dados
