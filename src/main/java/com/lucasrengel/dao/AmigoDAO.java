@@ -72,6 +72,7 @@ public class AmigoDAO {
         return true;
     }
 
+    //atualiza um amigo pelo seu id
     public boolean updateAmigoDB(Amigo objeto){
         String sql = "UPDATE tb_amigos SET nome = ? , telefone = ? , WHERE id = ?";
 
