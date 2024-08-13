@@ -60,6 +60,7 @@ public class FerramentaDAO {
         }
     }
 
+    //delete uma ferramenta a partir do id
     public boolean deleteFerramentaBD(int id){
         try{
             Statement stmt = this.getConexao().createStatement();
@@ -70,6 +71,27 @@ public class FerramentaDAO {
             throw new RuntimeException(erro);
         }
         return true;
+    }
+
+    //atualiza uma ferramenta a partir de um objeto
+    public boolean updateFerramentaBD(Ferramenta objeto){
+        String sql = "UPDATE tb_ferramentas SET nome = ? , marca = ? , preco = ? WHERE id = ?";
+
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+
+            stmt.setString(1, objeto.getNome());
+            stmt.setString(2, objeto.getMarca());
+            stmt.setDouble(3, objeto.getPreco());
+            stmt.setInt(4, objeto.getId());
+
+            stmt.execute();
+            stmt.close();
+
+            return true;
+        }catch (SQLException erro){
+            throw new RuntimeException(erro);
+        }
     }
 
     //metodo para se conectar ao banco de dados
