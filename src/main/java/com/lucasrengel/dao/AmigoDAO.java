@@ -72,6 +72,25 @@ public class AmigoDAO {
         return true;
     }
 
+    public boolean updateAmigoDB(Amigo objeto){
+        String sql = "UPDATE tb_amigos SET nome = ? , telefone = ? , WHERE id = ?";
+
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+
+            stmt.setString(1, objeto.getNome());
+            stmt.setString(1, objeto.getTelefone());
+            stmt.setInt(1, objeto.getId());
+
+            stmt.execute();
+            stmt.close();
+
+            return true;
+        }catch (SQLException erro){
+            throw new RuntimeException(erro);
+        }
+    }
+
     //metodo para se conectar ao banco de dados
     private Connection getConexao() {
         return Conexao.getConexao();
