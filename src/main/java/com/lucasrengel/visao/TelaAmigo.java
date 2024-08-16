@@ -130,6 +130,11 @@ public class TelaAmigo extends javax.swing.JFrame {
                 "ID", "Nome", "Telefone"
             }
         ));
+        tabelaAmigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaAmigoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaAmigo);
 
         botaoCadastrar.setBackground(new java.awt.Color(255, 255, 255));
@@ -166,9 +171,11 @@ public class TelaAmigo extends javax.swing.JFrame {
         });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nome:");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Telefone:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -288,6 +295,16 @@ public class TelaAmigo extends javax.swing.JFrame {
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_botaoCancelarActionPerformed
+
+    private void tabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAmigoMouseClicked
+        if(this.tabelaAmigo.getSelectedRow() != 1){
+            String nome = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString();
+            String telefone = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString();
+            
+            this.textoNome.setText(nome);
+            this.textoTelefone.setText(telefone);
+        }
+    }//GEN-LAST:event_tabelaAmigoMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
