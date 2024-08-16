@@ -4,6 +4,7 @@ import com.lucasrengel.dao.AmigoDAO;
 import com.lucasrengel.modelo.Amigo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaAmigo extends javax.swing.JFrame {
 
@@ -13,11 +14,23 @@ public class TelaAmigo extends javax.swing.JFrame {
     public TelaAmigo() {
         initComponents();
         this.objetoamigo = new AmigoDAO();
+        carregaTabela();
 
     }
-    
-    public void carregaTabela(){
-        
+
+    public void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) this.tabelaAmigo.getModel();
+        modelo.setNumRows(0);
+
+        ArrayList<Amigo> minhalista;
+        minhalista = objetoamigo.getMinhaLista();
+
+        for (Amigo amigo : minhalista) {
+            modelo.addRow(new Object[]{
+                amigo.getId(),
+                amigo.getNome(),
+                amigo.getTelefone(),});
+        }
     }
 
     public ArrayList<String> getListaAmigos() {
@@ -285,6 +298,8 @@ public class TelaAmigo extends javax.swing.JFrame {
             }
         } catch (Mensagens erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
+        }finally{
+            carregaTabela();
         }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
@@ -297,10 +312,10 @@ public class TelaAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void tabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAmigoMouseClicked
-        if(this.tabelaAmigo.getSelectedRow() != 1){
+        if (this.tabelaAmigo.getSelectedRow() != 1) {
             String nome = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString();
             String telefone = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString();
-            
+
             this.textoNome.setText(nome);
             this.textoTelefone.setText(telefone);
         }
