@@ -2,6 +2,7 @@ package com.lucasrengel.visao;
 
 import com.lucasrengel.dao.AmigoDAO;
 import com.lucasrengel.modelo.Amigo;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TelaAmigo extends javax.swing.JFrame {
@@ -13,6 +14,14 @@ public class TelaAmigo extends javax.swing.JFrame {
         initComponents();
         this.objetoamigo = new AmigoDAO();
 
+    }
+    
+    public void carregaTabela(){
+        
+    }
+
+    public ArrayList<String> getListaAmigos() {
+        return this.objetoamigo.getMinhaLista();
     }
 
     @SuppressWarnings("unchecked")
@@ -156,8 +165,10 @@ public class TelaAmigo extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nome:");
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Telefone:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -211,7 +222,6 @@ public class TelaAmigo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelBarra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -279,7 +289,7 @@ public class TelaAmigo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
-public static void main(String args[]) {
+    public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
