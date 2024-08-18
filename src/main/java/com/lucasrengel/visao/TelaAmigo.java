@@ -50,7 +50,7 @@ public class TelaAmigo extends javax.swing.JFrame {
         tabelaAmigo = new javax.swing.JTable();
         botaoCadastrar = new javax.swing.JButton();
         botaoAtualizar = new javax.swing.JButton();
-        botaoCancelar = new javax.swing.JButton();
+        botaoApagar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         textoNome = new javax.swing.JTextField();
@@ -173,14 +173,14 @@ public class TelaAmigo extends javax.swing.JFrame {
             }
         });
 
-        botaoCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        botaoCancelar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        botaoCancelar.setForeground(new java.awt.Color(0, 117, 143));
-        botaoCancelar.setText("Cancelar");
-        botaoCancelar.setFocusPainted(false);
-        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
+        botaoApagar.setBackground(new java.awt.Color(255, 255, 255));
+        botaoApagar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        botaoApagar.setForeground(new java.awt.Color(0, 117, 143));
+        botaoApagar.setText("Apagar");
+        botaoApagar.setFocusPainted(false);
+        botaoApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCancelarActionPerformed(evt);
+                botaoApagarActionPerformed(evt);
             }
         });
 
@@ -216,7 +216,7 @@ public class TelaAmigo extends javax.swing.JFrame {
                             .addComponent(textoTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                             .addComponent(textoNome)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -239,7 +239,7 @@ public class TelaAmigo extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -345,9 +345,9 @@ public class TelaAmigo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
-    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
+    private void botaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_botaoCancelarActionPerformed
+    }//GEN-LAST:event_botaoApagarActionPerformed
 
     private void tabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAmigoMouseClicked
         if (this.tabelaAmigo.getSelectedRow() != 1) {
@@ -390,9 +390,9 @@ public class TelaAmigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoApagar;
     private javax.swing.JButton botaoAtualizar;
     private javax.swing.JButton botaoCadastrar;
-    private javax.swing.JButton botaoCancelar;
     private javax.swing.JPanel iconeFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
