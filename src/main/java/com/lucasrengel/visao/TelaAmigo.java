@@ -301,7 +301,7 @@ public class TelaAmigo extends javax.swing.JFrame {
             if (this.objetoamigo.insertAmigoBD(new Amigo(nome, telefone))) {
                 this.textoNome.setText("");
                 this.textoTelefone.setText("");
-                JOptionPane.showMessageDialog(null, "Amigo cadastrado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Amigo cadastrado com sucesso!");
             }
         } catch (Mensagens erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -324,7 +324,7 @@ public class TelaAmigo extends javax.swing.JFrame {
             if (this.textoTelefone.getText().length() < 2) {
                 throw new Mensagens("Telefone deve conter ao menos 2 caracteres");
             } else {
-                telefone = this.textoNome.getText();
+                telefone = this.textoTelefone.getText();
             }
             if (this.tabelaAmigo.getSelectedRow() == -1) {
                 throw new Mensagens("Selecione um amigo para atualizar");
@@ -335,7 +335,7 @@ public class TelaAmigo extends javax.swing.JFrame {
             if (this.objetoamigo.updateAmigoDB(new Amigo(id, nome, telefone))) {
                 this.textoNome.setText("");
                 this.textoTelefone.setText("");
-                JOptionPane.showMessageDialog(null, "Amigo atualizado com sucesso");
+                JOptionPane.showMessageDialog(rootPane, "Amigo atualizado com sucesso");
             }
 
         } catch (Mensagens erro) {
@@ -360,7 +360,7 @@ public class TelaAmigo extends javax.swing.JFrame {
                 if(this.objetoamigo.deleteAmigoBD(id)){
                     this.textoNome.setText("");
                     this.textoTelefone.setText("");
-                    JOptionPane.showMessageDialog(null, "Amigo apagado com sucesso");
+                    JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso");
                 }
             }
             
@@ -374,7 +374,7 @@ public class TelaAmigo extends javax.swing.JFrame {
     private void tabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAmigoMouseClicked
         if (this.tabelaAmigo.getSelectedRow() != 1) {
             String nome = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString();
-            String telefone = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString();
+            String telefone = this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 2).toString();
 
             this.textoNome.setText(nome);
             this.textoTelefone.setText(telefone);
