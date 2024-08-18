@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class AmigoDAO {
 
     public static ArrayList<Amigo> minhaLista = new ArrayList<>();
-    
-     //retorna a lista de amigos
+
+    //retorna a lista de amigos
     public ArrayList getMinhaLista() {
 
         minhaLista.clear();
@@ -60,13 +60,13 @@ public class AmigoDAO {
     }
 
     //deleta um amigo pelo seu id
-    public boolean deleteAmigoBD(int id){
-        try{
+    public boolean deleteAmigoBD(int id) {
+        try {
             Statement stmt = this.getConexao().createStatement();
             stmt.executeUpdate("DELETE FROM tb_amigos WHERE id = " + id);
             stmt.close();
 
-        }catch (SQLException erro){
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
         }
 
@@ -74,21 +74,21 @@ public class AmigoDAO {
     }
 
     //atualiza um amigo pelo seu id
-    public boolean updateAmigoDB(Amigo objeto){
-        String sql = "UPDATE tb_amigos SET nome = ? , telefone = ? , WHERE id = ?";
+    public boolean updateAmigoDB(Amigo objeto) {
+        String sql = "UPDATE tb_amigos SET nome = ? ,telefone = ? WHERE id = ?";
 
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
             stmt.setString(1, objeto.getNome());
-            stmt.setString(1, objeto.getTelefone());
-            stmt.setInt(1, objeto.getId());
+            stmt.setString(2, objeto.getTelefone());
+            stmt.setInt(3, objeto.getId());
 
             stmt.execute();
             stmt.close();
 
             return true;
-        }catch (SQLException erro){
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
         }
     }
