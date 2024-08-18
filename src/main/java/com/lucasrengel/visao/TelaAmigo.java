@@ -360,7 +360,7 @@ public class TelaAmigo extends javax.swing.JFrame {
                 if(this.objetoamigo.deleteAmigoBD(id)){
                     this.textoNome.setText("");
                     this.textoTelefone.setText("");
-                  W  JOptionPane.showMessageDialog(null, "Amigo apagado com sucesso");
+                    JOptionPane.showMessageDialog(null, "Amigo apagado com sucesso");
                 }
             }
             
