@@ -326,13 +326,13 @@ public class TelaAmigo extends javax.swing.JFrame {
             } else {
                 telefone = this.textoNome.getText();
             }
-            if(this.tabelaAmigo.getSelectedRow() == -1){
+            if (this.tabelaAmigo.getSelectedRow() == -1) {
                 throw new Mensagens("Selecione um amigo para atualizar");
-            }else{
+            } else {
                 id = Integer.parseInt(this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 0).toString());
             }
-            
-            if(this.objetoamigo.updateAmigoDB(new Amigo(id, nome, telefone))){
+
+            if (this.objetoamigo.updateAmigoDB(new Amigo(id, nome, telefone))) {
                 this.textoNome.setText("");
                 this.textoTelefone.setText("");
                 JOptionPane.showMessageDialog(null, "Amigo atualizado com sucesso");
@@ -346,7 +346,29 @@ public class TelaAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
     private void botaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarActionPerformed
-        this.dispose();
+        try {
+            int id = 0;
+            if (this.tabelaAmigo.getSelectedRow() == -1) {
+                throw new Mensagens("Selecione um amigo para apagar");
+            } else {
+                id = Integer.parseInt(this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString());
+            }
+            
+            int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
+            
+            if(resposta == 0){
+                if(this.objetoamigo.deleteAmigoBD(id)){
+                    this.textoNome.setText("");
+                    this.textoTelefone.setText("");
+                  W  JOptionPane.showMessageDialog(null, "Amigo apagado com sucesso");
+                }
+            }
+            
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            carregaTabela();
+        }
     }//GEN-LAST:event_botaoApagarActionPerformed
 
     private void tabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAmigoMouseClicked
