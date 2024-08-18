@@ -293,7 +293,7 @@ public class TelaAmigo extends javax.swing.JFrame {
                 nome = this.textoNome.getText();
             }
             if (this.textoTelefone.getText().length() < 2) {
-                throw new Mensagens("Telefone deve conter ao menos 3 caracteres");
+                throw new Mensagens("Telefone deve conter ao menos 2 caracteres");
             } else {
                 telefone = this.textoTelefone.getText();
             }
@@ -305,13 +305,44 @@ public class TelaAmigo extends javax.swing.JFrame {
             }
         } catch (Mensagens erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
-        }finally{
+        } finally {
             carregaTabela();
         }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = 0;
+            String nome = "";
+            String telefone = "";
+
+            if (this.textoNome.getText().length() < 2) {
+                throw new Mensagens("Nome deve conter ao menos 2 caracteres");
+            } else {
+                nome = this.textoNome.getText();
+            }
+            if (this.textoTelefone.getText().length() < 2) {
+                throw new Mensagens("Telefone deve conter ao menos 2 caracteres");
+            } else {
+                telefone = this.textoNome.getText();
+            }
+            if(this.tabelaAmigo.getSelectedRow() == -1){
+                throw new Mensagens("Selecione um amigo para atualizar");
+            }else{
+                id = Integer.parseInt(this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 0).toString());
+            }
+            
+            if(this.objetoamigo.updateAmigoDB(new Amigo(id, nome, telefone))){
+                this.textoNome.setText("");
+                this.textoTelefone.setText("");
+                JOptionPane.showMessageDialog(null, "Amigo atualizado com sucesso");
+            }
+
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            carregaTabela();
+        }
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
