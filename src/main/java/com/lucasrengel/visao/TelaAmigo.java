@@ -351,7 +351,7 @@ public class TelaAmigo extends javax.swing.JFrame {
             if (this.tabelaAmigo.getSelectedRow() == -1) {
                 throw new Mensagens("Selecione um amigo para apagar");
             } else {
-                id = Integer.parseInt(this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 1).toString());
+                id = Integer.parseInt(this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 0).toString());
             }
             
             int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
