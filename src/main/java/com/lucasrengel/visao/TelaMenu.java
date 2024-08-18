@@ -22,9 +22,9 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoEmprestimo = new javax.swing.JButton();
         botaoFerramenta = new javax.swing.JButton();
         painelBarra = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         iconeFechar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -37,7 +37,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 117, 143));
 
         botaoAmigo.setBackground(new java.awt.Color(255, 255, 255));
-        botaoAmigo.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        botaoAmigo.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
         botaoAmigo.setForeground(new java.awt.Color(0, 117, 143));
         botaoAmigo.setText("Amigo");
         botaoAmigo.setFocusPainted(false);
@@ -48,13 +48,13 @@ public class TelaMenu extends javax.swing.JFrame {
         });
 
         botaoEmprestimo.setBackground(new java.awt.Color(255, 255, 255));
-        botaoEmprestimo.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        botaoEmprestimo.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
         botaoEmprestimo.setForeground(new java.awt.Color(0, 117, 143));
         botaoEmprestimo.setText("Emprestimos");
         botaoEmprestimo.setFocusPainted(false);
 
         botaoFerramenta.setBackground(new java.awt.Color(255, 255, 255));
-        botaoFerramenta.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        botaoFerramenta.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
         botaoFerramenta.setForeground(new java.awt.Color(0, 117, 143));
         botaoFerramenta.setText("Ferramenta");
         botaoFerramenta.setFocusPainted(false);
@@ -72,6 +72,11 @@ public class TelaMenu extends javax.swing.JFrame {
                 painelBarraMousePressed(evt);
             }
         });
+
+        jLabel2.setBackground(new java.awt.Color(0, 117, 143));
+        jLabel2.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 117, 143));
+        jLabel2.setText("Menu Principal");
 
         iconeFechar.setBackground(new java.awt.Color(255, 255, 255));
         iconeFechar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -92,22 +97,16 @@ public class TelaMenu extends javax.swing.JFrame {
         iconeFecharLayout.setHorizontalGroup(
             iconeFecharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconeFecharLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
         iconeFecharLayout.setVerticalGroup(
             iconeFecharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iconeFecharLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(iconeFecharLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 6, Short.MAX_VALUE))
         );
-
-        jLabel2.setBackground(new java.awt.Color(0, 117, 143));
-        jLabel2.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 117, 143));
-        jLabel2.setText("Menu Principal");
 
         javax.swing.GroupLayout painelBarraLayout = new javax.swing.GroupLayout(painelBarra);
         painelBarra.setLayout(painelBarraLayout);
@@ -116,16 +115,13 @@ public class TelaMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBarraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addComponent(iconeFechar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         painelBarraLayout.setVerticalGroup(
             painelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iconeFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(painelBarraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel2)
+            .addComponent(iconeFechar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -134,24 +130,24 @@ public class TelaMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelBarra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botaoEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoFerramenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoAmigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(painelBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(47, 47, 47)
                 .addComponent(botaoAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(botaoFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(botaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
