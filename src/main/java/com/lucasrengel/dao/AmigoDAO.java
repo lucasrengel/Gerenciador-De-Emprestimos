@@ -93,6 +93,60 @@ public class AmigoDAO {
         }
     }
 
+    public Amigo selectAmigoBD(int id) {
+
+        Amigo objeto = new Amigo();
+        objeto.setId(id);
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_amigos WHERE id = " + id);
+            res.next();
+
+            objeto.setNome(res.getString("nome"));
+            objeto.setTelefone(res.getString("telefone"));
+
+            stmt.close();
+
+        } catch (SQLException erro) {
+        }
+        return objeto;
+    }
+
+    public Amigo getAmigoComMaisEmprestimos() {
+        Amigo amigoComMaisEmprestimos = null;
+        int maxEmprestimos = 0;
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT id_amigo, COUNT(*) as total_emprestimos FROM tb_emprestimos GROUP BY id_amigo ORDER BY total_emprestimos DESC LIMIT 1");
+
+            if (res.next()) {
+                int idAmigo = res.getInt("id_amigo");
+                int totalEmprestimos = res.getInt("total_emprestimos");
+
+                amigoComMaisEmprestimos = selectAmigoBD(idAmigo);
+                maxEmprestimos = totalEmprestimos;
+            }
+
+            stmt.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                this.getConexao().close();
+            } catch (Exception e) {
+            }
+        }
+
+        if (amigoComMaisEmprestimos != null) {
+            amigoComMaisEmprestimos.setTotalEmprestimos(maxEmprestimos);
+        }
+
+        return amigoComMaisEmprestimos;
+    }
+
     //metodo para se conectar ao banco de dados
     private Connection getConexao() {
         return Conexao.getConexao();
