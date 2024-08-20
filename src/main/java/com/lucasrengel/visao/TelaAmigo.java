@@ -299,6 +299,12 @@ public class TelaAmigo extends javax.swing.JFrame {
                 telefone = this.textoTelefone.getText();
             }
 
+            for (Amigo a : AmigoDAO.minhaLista) { //
+                if (a.getTelefone().equals(telefone)) {
+                    throw new Mensagens("Esse telefone já está cadastrado!");
+                }
+            }
+
             if (this.objetoamigo.insertAmigoBD(new Amigo(nome, telefone))) {
                 this.textoNome.setText("");
                 this.textoTelefone.setText("");
@@ -354,17 +360,17 @@ public class TelaAmigo extends javax.swing.JFrame {
             } else {
                 id = Integer.parseInt(this.tabelaAmigo.getValueAt(this.tabelaAmigo.getSelectedRow(), 0).toString());
             }
-            
+
             int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
-            
-            if(resposta == 0){
-                if(this.objetoamigo.deleteAmigoBD(id)){
+
+            if (resposta == 0) {
+                if (this.objetoamigo.deleteAmigoBD(id)) {
                     this.textoNome.setText("");
                     this.textoTelefone.setText("");
                     JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso");
                 }
             }
-            
+
         } catch (Mensagens erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } finally {
