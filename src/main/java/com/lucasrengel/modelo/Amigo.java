@@ -5,10 +5,11 @@ public class Amigo {
     private int id;
     private String nome;
     private String telefone;
+    private int totalEmprestimos;
 
     public Amigo() {
     }
-    
+
     //construtor sem id para o auto incremental do banco de dados
     public Amigo(String nome, String telefone) {
         this.nome = nome;
@@ -45,11 +46,19 @@ public class Amigo {
         this.telefone = telefone;
     }
 
+    public int getTotalEmprestimos() {
+        return totalEmprestimos;
+    }
+
+    public void setTotalEmprestimos(int totalEmprestimos) {
+        this.totalEmprestimos = totalEmprestimos;
+    }
+
     // metodo toString para facilitar a visualizacao do Amigo
     @Override
     public String toString() {
         return "Id: " + id + ", Nome: " + nome + ", Telefone: " + telefone;
-        
+
     }
-    
+
 }
