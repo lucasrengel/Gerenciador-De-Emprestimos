@@ -40,10 +40,10 @@ public class FerramentaDAO {
     }
 
     //cria uma ferramenta a partir de um objeto
-    public boolean insertFerramentaBD(Ferramenta objeto){
+    public boolean insertFerramentaBD(Ferramenta objeto) {
         String sql = "INSERT INTO tb_ferramentas(id,nome,marca,custo)VALUES(?,?,?,?)";
 
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
             stmt.setInt(1, objeto.getId());
@@ -55,29 +55,29 @@ public class FerramentaDAO {
             stmt.close();
 
             return true;
-        }catch (SQLException erro){
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
         }
     }
 
     //delete uma ferramenta a partir do id
-    public boolean deleteFerramentaBD(int id){
-        try{
+    public boolean deleteFerramentaBD(int id) {
+        try {
             Statement stmt = this.getConexao().createStatement();
             stmt.execute("DELETE FROM tb_amigos WHERE id = " + id);
             stmt.close();
 
-        }catch (SQLException erro){
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
         }
         return true;
     }
 
     //atualiza uma ferramenta a partir de um objeto
-    public boolean updateFerramentaBD(Ferramenta objeto){
+    public boolean updateFerramentaBD(Ferramenta objeto) {
         String sql = "UPDATE tb_ferramentas SET nome = ? , marca = ? , preco = ? WHERE id = ?";
 
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
             stmt.setString(1, objeto.getNome());
@@ -89,9 +89,32 @@ public class FerramentaDAO {
             stmt.close();
 
             return true;
-        }catch (SQLException erro){
+        } catch (SQLException erro) {
             throw new RuntimeException(erro);
         }
+    }
+
+    public double getTotal() {
+        ResultSet res;
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            res = stmt.executeQuery("SELECT SUM(custo) FROM tb_ferramentas");
+            if (res.next()) {
+                custoTotal = res.getDouble("SUM(custo)");
+            }
+            stmt.close();
+
+        } catch (SQLException erro) {
+            throw new RuntimeException(erro);
+        } finally {
+            try {
+                this.getConexao().close();
+            } catch (Exception e) {
+            }
+        }
+
+        return custoTotal;
     }
 
     //metodo para se conectar ao banco de dados
