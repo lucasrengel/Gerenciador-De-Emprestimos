@@ -99,9 +99,9 @@ public class FerramentaDAO {
 
         try {
             Statement stmt = this.getConexao().createStatement();
-            res = stmt.executeQuery("SELECT SUM(custo) FROM tb_ferramentas");
+            res = stmt.executeQuery("SELECT SUM(preco) FROM tb_ferramentas");
             if (res.next()) {
-                custoTotal = res.getDouble("SUM(custo)");
+                custoTotal = res.getDouble("SUM(preco)");
             }
             stmt.close();
 
