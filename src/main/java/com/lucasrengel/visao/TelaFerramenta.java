@@ -9,10 +9,12 @@ import javax.swing.table.DefaultTableModel;
 public class TelaFerramenta extends javax.swing.JFrame {
 
     private int xMouse, yMouse;
-    private FerramentaDAO objetoferramenta = new FerramentaDAO();
+    private FerramentaDAO objetoferramenta;
 
     public TelaFerramenta() {
         initComponents();
+        objetoferramenta = new FerramentaDAO();
+        carregaTabela();
     }
 
     public void carregaTabela() {
@@ -29,13 +31,13 @@ public class TelaFerramenta extends javax.swing.JFrame {
                 ferramenta.getMarca(),
                 ferramenta.getPreco(),});
         }
-        custoTotal();
+        precoTotal();
     }
 
-    private void custoTotal() {
-        double custoTotal = objetoferramenta.getTotal();
-        String custoTotalFormatado = String.format("%.2f", custoTotal);
-        this.textoTotal.setText(custoTotalFormatado);
+    private void precoTotal() {
+        double precoTotal = objetoferramenta.getTotal();
+        String precoTotalFormatado = String.format("%.2f", precoTotal);
+        this.textoTotal.setText(precoTotalFormatado);
     }
 
     @SuppressWarnings("unchecked")
