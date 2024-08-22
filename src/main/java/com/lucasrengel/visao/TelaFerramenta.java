@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaFerramenta extends javax.swing.JFrame {
 
     private int xMouse, yMouse;
-    private FerramentaDAO objetoferramenta;
+    private FerramentaDAO objetoferramenta = new FerramentaDAO();
 
     public TelaFerramenta() {
         initComponents();
@@ -62,6 +62,8 @@ public class TelaFerramenta extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 117, 143));
 
@@ -234,7 +236,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
                             .addComponent(textoNome)
                             .addComponent(textoMarca)
                             .addComponent(textoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +258,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(textoTotal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAtualizar)
                     .addComponent(botaoApagar)
@@ -282,10 +284,50 @@ public class TelaFerramenta extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        // TODO add your handling code here:
+        try {
+            String nome = "";
+            String marca = "";
+            double preco = 0;
+
+            if (this.textoNome.getText().length() < 2) {
+                throw new Mensagens("Nome deve conter ao menos 2 caracteres");
+            } else {
+                nome = this.textoNome.getText();
+            }
+            if (this.textoMarca.getText().length() < 2) {
+                throw new Mensagens("Marca deve conter ao menos 2 caracteres");
+            } else {
+                marca = this.textoMarca.getText();
+            }
+            if (this.textoPreco.getText().length() < 0) {
+                throw new Mensagens("Preco deve ser numero e maior que zero");
+            } else {
+                preco = Double.parseDouble(this.textoPreco.getText());
+            }
+
+            for (Ferramenta f : FerramentaDAO.minhaLista) { // checa se o amigo ja está cadastrado
+                if (f.getNome().equals(nome) && f.getMarca().equals(marca)) {
+                    throw new Mensagens("Essa Ferramenta já está cadastrada!");
+                }
+            }
+
+            if (this.objetoferramenta.insertFerramentaBD(new Ferramenta(nome, marca, preco))) {
+                this.textoNome.setText("");
+                this.textoMarca.setText("");
+                this.textoPreco.setText("");
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta cadastrada com sucesso!");
+            }
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um numero.");
+        } finally {
+            carregaTabela();
+        }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void iconeFecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconeFecharMouseClicked
@@ -309,7 +351,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_textoPrecoActionPerformed
 
     private void botaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarActionPerformed
-         try {
+        try {
             int id = 0;
             if (this.tabelaFerramenta.getSelectedRow() == -1) {
                 throw new Mensagens("Selecione uma ferramenta para apagar");
