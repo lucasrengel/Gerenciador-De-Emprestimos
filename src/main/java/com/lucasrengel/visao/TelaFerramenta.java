@@ -1,6 +1,7 @@
 package com.lucasrengel.visao;
 
 import com.lucasrengel.dao.FerramentaDAO;
+import com.lucasrengel.modelo.Ferramenta;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +15,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
     }
 
     public void carregaTabela() {
-        DefaultTableModel modelo = (DefaultTableModel) this.jTableFerramenta.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.tabelaFerramenta.getModel();
         modelo.setNumRows(0);
 
         ArrayList<Ferramenta> minhalista;
@@ -25,9 +26,15 @@ public class TelaFerramenta extends javax.swing.JFrame {
                 ferramenta.getId(),
                 ferramenta.getNome(),
                 ferramenta.getMarca(),
-                ferramenta.getCusto(),});
+                ferramenta.getPreco(),});
         }
         custoTotal();
+    }
+
+    private void custoTotal() {
+        double custoTotal = objetoferramenta.getTotal();
+        String custoTotalFormatado = String.format("%.2f", custoTotal);
+        this.textoTotal.setText(custoTotalFormatado);
     }
 
     @SuppressWarnings("unchecked")
@@ -50,7 +57,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
         JTFmarca = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         JTFcusto = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        textoTotal = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,8 +191,8 @@ public class TelaFerramenta extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jLabel6.setText("0");
+        textoTotal.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        textoTotal.setText("0");
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
@@ -202,7 +209,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6))
+                        .addComponent(textoTotal))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(botaoApagar)
@@ -242,7 +249,7 @@ public class TelaFerramenta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel6))
+                    .addComponent(textoTotal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAtualizar)
@@ -340,11 +347,11 @@ public class TelaFerramenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel painelBarra;
     private javax.swing.JTable tabelaFerramenta;
+    private javax.swing.JLabel textoTotal;
     // End of variables declaration//GEN-END:variables
 }
