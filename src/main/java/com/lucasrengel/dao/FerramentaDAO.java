@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class FerramentaDAO {
 
     public static ArrayList<Ferramenta> minhaLista = new ArrayList<>();
-    double custoTotal;
+    double precoTotal;
 
     public ArrayList getMinhaLista() {
 
@@ -23,9 +23,9 @@ public class FerramentaDAO {
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
                 String marca = res.getString("marca");
-                double custo = res.getDouble("custo");
+                double preco = res.getDouble("preco");
 
-                Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
+                Ferramenta objeto = new Ferramenta(id, nome, marca, preco);
 
                 minhaLista.add(objeto);
             }
@@ -41,7 +41,7 @@ public class FerramentaDAO {
 
     //cria uma ferramenta a partir de um objeto
     public boolean insertFerramentaBD(Ferramenta objeto) {
-        String sql = "INSERT INTO tb_ferramentas(id,nome,marca,custo)VALUES(?,?,?,?)";
+        String sql = "INSERT INTO tb_ferramentas(id,nome,marca,preco)VALUES(?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -64,7 +64,7 @@ public class FerramentaDAO {
     public boolean deleteFerramentaBD(int id) {
         try {
             Statement stmt = this.getConexao().createStatement();
-            stmt.execute("DELETE FROM tb_amigos WHERE id = " + id);
+            stmt.execute("DELETE FROM tb_ferramentas WHERE id = " + id);
             stmt.close();
 
         } catch (SQLException erro) {
@@ -101,7 +101,7 @@ public class FerramentaDAO {
             Statement stmt = this.getConexao().createStatement();
             res = stmt.executeQuery("SELECT SUM(preco) FROM tb_ferramentas");
             if (res.next()) {
-                custoTotal = res.getDouble("SUM(preco)");
+                precoTotal = res.getDouble("SUM(preco)");
             }
             stmt.close();
 
@@ -114,7 +114,7 @@ public class FerramentaDAO {
             }
         }
 
-        return custoTotal;
+        return precoTotal;
     }
 
     //metodo para se conectar ao banco de dados
