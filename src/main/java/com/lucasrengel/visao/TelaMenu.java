@@ -58,6 +58,11 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoFerramenta.setForeground(new java.awt.Color(0, 117, 143));
         botaoFerramenta.setText("Ferramenta");
         botaoFerramenta.setFocusPainted(false);
+        botaoFerramenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFerramentaActionPerformed(evt);
+            }
+        });
 
         painelBarra.setBackground(new java.awt.Color(255, 255, 255));
         painelBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -185,6 +190,11 @@ public class TelaMenu extends javax.swing.JFrame {
         
         setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_painelBarraMouseDragged
+
+    private void botaoFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFerramentaActionPerformed
+        TelaFerramenta tela = new TelaFerramenta();
+        tela.setVisible(true);
+    }//GEN-LAST:event_botaoFerramentaActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
