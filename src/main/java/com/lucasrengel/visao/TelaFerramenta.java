@@ -3,6 +3,7 @@ package com.lucasrengel.visao;
 import com.lucasrengel.dao.FerramentaDAO;
 import com.lucasrengel.modelo.Ferramenta;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaFerramenta extends javax.swing.JFrame {
@@ -52,11 +53,11 @@ public class TelaFerramenta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        JTFnome = new javax.swing.JTextField();
+        textoNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        JTFmarca = new javax.swing.JTextField();
+        textoMarca = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        JTFcusto = new javax.swing.JTextField();
+        textoPreco = new javax.swing.JTextField();
         textoTotal = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -83,6 +84,11 @@ public class TelaFerramenta extends javax.swing.JFrame {
         botaoApagar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         botaoApagar.setForeground(new java.awt.Color(0, 117, 143));
         botaoApagar.setText("Apagar");
+        botaoApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoApagarActionPerformed(evt);
+            }
+        });
 
         tabelaFerramenta.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tabelaFerramenta.setModel(new javax.swing.table.DefaultTableModel(
@@ -170,24 +176,24 @@ public class TelaFerramenta extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nome:");
 
-        JTFnome.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        textoNome.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Marca:");
 
-        JTFmarca.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        textoMarca.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Custo:");
+        jLabel5.setText("Preco:");
 
-        JTFcusto.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        JTFcusto.addActionListener(new java.awt.event.ActionListener() {
+        textoPreco.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        textoPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFcustoActionPerformed(evt);
+                textoPrecoActionPerformed(evt);
             }
         });
 
@@ -225,9 +231,9 @@ public class TelaFerramenta extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JTFnome)
-                            .addComponent(JTFmarca)
-                            .addComponent(JTFcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(textoNome)
+                            .addComponent(textoMarca)
+                            .addComponent(textoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -237,15 +243,15 @@ public class TelaFerramenta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(JTFnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(JTFmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(JTFcusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -298,9 +304,36 @@ public class TelaFerramenta extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_painelBarraMousePressed
 
-    private void JTFcustoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFcustoActionPerformed
+    private void textoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPrecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTFcustoActionPerformed
+    }//GEN-LAST:event_textoPrecoActionPerformed
+
+    private void botaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarActionPerformed
+         try {
+            int id = 0;
+            if (this.tabelaFerramenta.getSelectedRow() == -1) {
+                throw new Mensagens("Selecione uma ferramenta para apagar");
+            } else {
+                id = Integer.parseInt(this.tabelaFerramenta.getValueAt(this.tabelaFerramenta.getSelectedRow(), 0).toString());
+            }
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esssa ferramenta?");
+
+            if (resposta == 0) {
+                if (this.objetoferramenta.deleteFerramentaBD(id)) {
+                    this.textoNome.setText("");
+                    this.textoMarca.setText("");
+                    this.textoPreco.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Ferramenta apagada com sucesso");
+                }
+            }
+
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            carregaTabela();
+        }
+    }//GEN-LAST:event_botaoApagarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -335,9 +368,6 @@ public class TelaFerramenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JTFcusto;
-    private javax.swing.JTextField JTFmarca;
-    private javax.swing.JTextField JTFnome;
     private javax.swing.JButton botaoApagar;
     private javax.swing.JButton botaoAtualizar;
     private javax.swing.JButton botaoCadastrar;
@@ -352,6 +382,9 @@ public class TelaFerramenta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel painelBarra;
     private javax.swing.JTable tabelaFerramenta;
+    private javax.swing.JTextField textoMarca;
+    private javax.swing.JTextField textoNome;
+    private javax.swing.JTextField textoPreco;
     private javax.swing.JLabel textoTotal;
     // End of variables declaration//GEN-END:variables
 }
