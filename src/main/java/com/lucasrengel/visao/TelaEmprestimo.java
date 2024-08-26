@@ -3,6 +3,9 @@ package com.lucasrengel.visao;
 import com.lucasrengel.dao.AmigoDAO;
 import com.lucasrengel.dao.EmprestimoDAO;
 import com.lucasrengel.dao.FerramentaDAO;
+import com.lucasrengel.modelo.Emprestimo;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaEmprestimo extends javax.swing.JFrame {
 
@@ -17,6 +20,26 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         this.objetoferramenta = new FerramentaDAO();
         this.objetoemprestimo = new EmprestimoDAO();
 
+        carregaTabela();
+    }
+
+    public final void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) this.tabelaEmprestimo.getModel();
+        modelo.setNumRows(0);
+
+        ArrayList<Emprestimo> minhalista = objetoemprestimo.getMinhaLista();
+
+        for (Emprestimo e : minhalista) {
+            String dataDevolucao = (e.getDateDevolucao() != null) ? e.getDateDevolucao().toString() : "Pendente";
+
+            modelo.addRow(new Object[]{
+                e.getId(),
+                e.getIdAmigo(),
+                e.getIdFerramenta(),
+                e.getDataEmprestimo(),
+                dataDevolucao // Exibe "Pendente" se a data de devolucao for nula
+            });
+        }
     }
 
     @SuppressWarnings("unchecked")
