@@ -94,7 +94,7 @@ public class FerramentaDAO {
         }
     }
 
-    public Ferramenta selectAmigoBD(int id) {
+    public Ferramenta selectFerramentaBD(int id) {
 
         Ferramenta objeto = new Ferramenta();
         objeto.setId(id);
