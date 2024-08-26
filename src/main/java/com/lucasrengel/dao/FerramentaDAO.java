@@ -94,6 +94,27 @@ public class FerramentaDAO {
         }
     }
 
+    public Ferramenta selectAmigoBD(int id) {
+
+        Ferramenta objeto = new Ferramenta();
+        objeto.setId(id);
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_amigos WHERE id = " + id);
+            res.next();
+
+            objeto.setNome(res.getString("nome"));
+            objeto.setMarca(res.getString("marca"));
+            objeto.setPreco(res.getDouble("preco"));
+
+            stmt.close();
+
+        } catch (SQLException erro) {
+        }
+        return objeto;
+    }
+
     public double getTotal() {
         ResultSet res;
 
