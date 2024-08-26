@@ -1,11 +1,22 @@
 package com.lucasrengel.visao;
 
+import com.lucasrengel.dao.AmigoDAO;
+import com.lucasrengel.dao.EmprestimoDAO;
+import com.lucasrengel.dao.FerramentaDAO;
+
 public class TelaEmprestimo extends javax.swing.JFrame {
 
     private int xMouse, yMouse;
-    
+    private final AmigoDAO objetoamigo;
+    private final FerramentaDAO objetoferramenta;
+    private final EmprestimoDAO objetoemprestimo;
+
     public TelaEmprestimo() {
         initComponents();
+        this.objetoamigo = new AmigoDAO();
+        this.objetoferramenta = new FerramentaDAO();
+        this.objetoemprestimo = new EmprestimoDAO();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -275,15 +286,15 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        
+
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
     private void botaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarActionPerformed
-        
+
     }//GEN-LAST:event_botaoApagarActionPerformed
 
     private void tabelaEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaEmprestimoMouseClicked
-        
+
     }//GEN-LAST:event_tabelaEmprestimoMouseClicked
 
     private void iconeFecharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconeFecharMouseClicked
