@@ -14,14 +14,14 @@ public class Emprestimo {
     }
 
     //construtor sem id para o auto incremental do banco de dados
-    public Emprestimo(Date dataEmprestimo, Date dateDevolucao, Amigo idAmigo, Ferramenta idFerramenta) {
+    public Emprestimo( Amigo idAmigo, Ferramenta idFerramenta, Date dataEmprestimo, Date dateDevolucao) {
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dateDevolucao;
         this.idAmigo = idAmigo;
         this.idFerramenta = idFerramenta;
     }
 
-    public Emprestimo(int id, Date dataEmprestimo, Date dateDevolucao, Amigo idAmigo, Ferramenta idFerramenta) {
+    public Emprestimo(int id, Amigo idAmigo, Ferramenta idFerramenta, Date dataEmprestimo, Date dateDevolucao) {
         this.id = id;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dateDevolucao;
