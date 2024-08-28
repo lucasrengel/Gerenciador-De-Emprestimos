@@ -83,6 +83,11 @@ public class TelaFerramenta extends javax.swing.JFrame {
         botaoAtualizar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         botaoAtualizar.setForeground(new java.awt.Color(0, 117, 143));
         botaoAtualizar.setText("Atualizar");
+        botaoAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAtualizarActionPerformed(evt);
+            }
+        });
 
         botaoApagar.setBackground(new java.awt.Color(255, 255, 255));
         botaoApagar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -371,6 +376,55 @@ public class TelaFerramenta extends javax.swing.JFrame {
             carregaTabela();
         }
     }//GEN-LAST:event_botaoApagarActionPerformed
+
+    private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
+        try {
+            int id = 0;
+            String nome = "";
+            String marca = "";
+            double preco = 0;
+
+            if (this.textoNome.getText().length() < 2) {
+                throw new Mensagens("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nome = this.textoNome.getText();
+            }
+
+            if (this.textoMarca.getText().length() <= 0) {
+                throw new Mensagens("Marca deve conter ao menos 2 caracteres.");
+            } else {
+                marca = this.textoMarca.getText();
+            }
+
+            if (this.textoPreco.getText().length() < 2) {
+                throw new Mensagens("Custo deve conter ao menos 1 numero.");
+            } else {
+                preco = Double.parseDouble(this.textoPreco.getText());
+            }
+
+            if (this.tabelaFerramenta.getSelectedRow() == -1) {
+                throw new Mensagens("Primeiro Selecione uma Ferramenta para Alterar");
+            } else {
+                id = Integer.parseInt(this.tabelaFerramenta.getValueAt(this.tabelaFerramenta.getSelectedRow(), 0).toString());
+            }
+
+            if (this.objetoferramenta.updateFerramentaBD(new Ferramenta(id, nome, marca, preco))) {
+
+                this.textoNome.setText("");
+                this.textoMarca.setText("");
+                this.textoPreco.setText("");
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta alterada com Sucesso!");
+
+            }
+            System.out.println(this.objetoferramenta.getMinhaLista().toString());
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um numero.");
+        } finally {
+            carregaTabela();
+        }
+    }//GEN-LAST:event_botaoAtualizarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
