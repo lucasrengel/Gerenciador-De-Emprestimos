@@ -202,10 +202,12 @@ public class TelaFerramenta extends javax.swing.JFrame {
         });
 
         textoTotal.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        textoTotal.setForeground(new java.awt.Color(255, 255, 255));
         textoTotal.setText("0");
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Gasto Total:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
