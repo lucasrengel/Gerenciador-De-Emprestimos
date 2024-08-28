@@ -111,6 +111,11 @@ public class TelaFerramenta extends javax.swing.JFrame {
                 "ID", "Nome", "Marcca", "Preco"
             }
         ));
+        tabelaFerramenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaFerramentaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaFerramenta);
 
         painelBarra.setBackground(new java.awt.Color(255, 255, 255));
@@ -425,6 +430,18 @@ public class TelaFerramenta extends javax.swing.JFrame {
             carregaTabela();
         }
     }//GEN-LAST:event_botaoAtualizarActionPerformed
+
+    private void tabelaFerramentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFerramentaMouseClicked
+        if (this.tabelaFerramenta.getSelectedRow() != -1) {
+            String nome = this.tabelaFerramenta.getValueAt(this.tabelaFerramenta.getSelectedRow(), 1).toString();
+            String marca = this.tabelaFerramenta.getValueAt(this.tabelaFerramenta.getSelectedRow(), 2).toString();
+            String preco = this.tabelaFerramenta.getValueAt(this.tabelaFerramenta.getSelectedRow(), 3).toString();
+
+            this.textoNome.setText(nome);
+            this.textoMarca.setText(marca);
+            this.textoPreco.setText(preco);
+        }
+    }//GEN-LAST:event_tabelaFerramentaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
