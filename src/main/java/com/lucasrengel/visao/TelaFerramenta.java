@@ -195,11 +195,6 @@ public class TelaFerramenta extends javax.swing.JFrame {
         jLabel5.setText("Preco:");
 
         textoPreco.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        textoPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoPrecoActionPerformed(evt);
-            }
-        });
 
         textoTotal.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         textoTotal.setForeground(new java.awt.Color(255, 255, 255));
@@ -349,10 +344,6 @@ public class TelaFerramenta extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_painelBarraMousePressed
-
-    private void textoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPrecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoPrecoActionPerformed
 
     private void botaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarActionPerformed
         try {
