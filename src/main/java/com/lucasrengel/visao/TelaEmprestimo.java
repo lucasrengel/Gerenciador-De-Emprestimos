@@ -4,7 +4,11 @@ import com.lucasrengel.dao.AmigoDAO;
 import com.lucasrengel.dao.EmprestimoDAO;
 import com.lucasrengel.dao.FerramentaDAO;
 import com.lucasrengel.modelo.Emprestimo;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaEmprestimo extends javax.swing.JFrame {
@@ -305,7 +309,40 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        try {
+            int idAmigo = Integer.parseInt(this.textoAmigo.getText());
+            int idFerramenta = Integer.parseInt(this.textoFerramenta.getText());
 
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date dataEmprestimo = new Date(sdf.parse(this.textoData.getText()).getTime());
+            Date dataDevolucao = null;
+
+            // Verifica se foi inserida uma data de devolução
+            if (!this.textoDevolucao.getText().isEmpty()) {
+                dataDevolucao = new Date(sdf.parse(this.textoDevolucao.getText()).getTime());
+
+                // Verifica se a data de emprestimo eh maior que a data de devolução
+                if (dataEmprestimo.after(dataDevolucao)) {
+                    throw new ParseException("Data de empréstimo posterior à data de devolução", 0);
+                }
+            }
+
+            // Cria o objeto de emprestimo com a data de devolucao
+            Emprestimo emprestimo = new Emprestimo(objetoamigo.selectAmigoBD(idAmigo),
+                    objetoferramenta.selectFerramentaBD(idFerramenta),
+                    dataEmprestimo,
+                    dataDevolucao);
+
+            // Registra o emprestimo
+            if (objetoemprestimo.insertEmprestimoBD(emprestimo)) {
+                JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
+            }
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            carregaTabela(); // Atualiza a tabela
+        }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
