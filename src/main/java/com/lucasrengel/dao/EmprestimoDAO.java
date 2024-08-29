@@ -4,6 +4,7 @@ import com.lucasrengel.modelo.Amigo;
 import com.lucasrengel.modelo.Emprestimo;
 import com.lucasrengel.modelo.Ferramenta;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -49,6 +50,35 @@ public class EmprestimoDAO {
         }
 
         return minhaLista;
+    }
+
+    public int amigoPendente(int idAmigo, int idEmprestimo) {
+        int idFerramenta = 0;
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet pdt = stmt.executeQuery("SELECT id_ferramenta FROM `tb_emprestimos` WHERE `id_amigo` = " + idAmigo + " AND `data_devolucao` IS NULL AND `id` != " + idEmprestimo);
+
+            if (pdt.next()) {
+                idFerramenta = pdt.getInt("id_ferramenta");
+            }
+
+            stmt.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                this.getConexao().close();
+            } catch (Exception e) {
+            }
+            try {
+                this.getConexao().close();
+            } catch (Exception e) {
+            }
+        }
+
+        return idFerramenta;
     }
 
     //metodo para se conectar ao banco de dados
