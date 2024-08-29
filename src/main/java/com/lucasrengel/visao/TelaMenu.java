@@ -52,6 +52,11 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoEmprestimo.setForeground(new java.awt.Color(0, 117, 143));
         botaoEmprestimo.setText("Emprestimos");
         botaoEmprestimo.setFocusPainted(false);
+        botaoEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEmprestimoActionPerformed(evt);
+            }
+        });
 
         botaoFerramenta.setBackground(new java.awt.Color(255, 255, 255));
         botaoFerramenta.setFont(new java.awt.Font("JetBrains Mono", 1, 18)); // NOI18N
@@ -195,6 +200,11 @@ public class TelaMenu extends javax.swing.JFrame {
         TelaFerramenta tela = new TelaFerramenta();
         tela.setVisible(true);
     }//GEN-LAST:event_botaoFerramentaActionPerformed
+
+    private void botaoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEmprestimoActionPerformed
+        TelaEmprestimo tela = new TelaEmprestimo();
+        tela.setVisible(true);
+    }//GEN-LAST:event_botaoEmprestimoActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
