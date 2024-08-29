@@ -52,6 +52,35 @@ public class EmprestimoDAO {
         return minhaLista;
     }
 
+    public boolean insertEmprestimoBD(Emprestimo emprestimo) {
+
+        if (ferramentaDAO.isFerramentaEmprestada(emprestimo.getIdFerramenta().getId())) {
+            throw new RuntimeException("Esta ferramenta já está emprestada. Não é possível realizar um novo empréstimo.");
+        }
+
+        if (amigoPendente(emprestimo.getIdAmigo().getId(), emprestimo.getId()) != 0) {
+            throw new RuntimeException("O amigo já tem uma ferramenta emprestada e não devolveu.");
+        }
+
+        String sql = "INSERT INTO tb_emprestimos (id_amigo, id_ferramenta, data_emprestimo, data_devolucao) VALUES (?, ?, ?, ?)";
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+
+            stmt.setInt(1, emprestimo.getIdAmigo().getId());
+            stmt.setInt(2, emprestimo.getIdFerramenta().getId());
+            stmt.setDate(3, emprestimo.getDataEmprestimo());
+            stmt.setDate(4, emprestimo.getDateDevolucao());
+
+            stmt.execute();
+            stmt.close();
+
+            return true;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public int amigoPendente(int idAmigo, int idEmprestimo) {
         int idFerramenta = 0;
 
